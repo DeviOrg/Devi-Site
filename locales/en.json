@@ -254,6 +254,10 @@
             "tiktok": {
                 "title": "TikTok",
                 "description": "The bot's official TikTok account."
+            },
+            "status": {
+                "title": "Service Status",
+                "description": "Status of all Devi services, Discord API, and Gateway."
             }
         }
     },

@@ -254,6 +254,10 @@
             "tiktok": {
                 "title": "TikTok",
                 "description": "Botin virallinen TikTok-tili."
+            },
+            "status": {
+                "title": "Palveluiden tila",
+                "description": "Kaikkien Devi-palveluiden, Discord API:n ja Gatewayn tila."
             }
         }
     },

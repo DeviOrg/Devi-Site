@@ -21,7 +21,8 @@ LINKS = {
     "reviews-server": "https://top.gg/discord/servers/896841550260490240#reviews",
     "github": "https://github.com/security-camera/Devi-Discord-Bot",
     "github-site": "https://github.com/security-camera/Devi-Site",
-    "tiktok": "https://www.tiktok.com/@devi_discord"
+    "tiktok": "https://www.tiktok.com/@devi_discord",
+    "status": "https://devi-status.betteruptime.com/"
 }
 
 # Each group: id -> icon + ordered commands.

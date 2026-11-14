@@ -254,6 +254,10 @@
             "tiktok": {
                 "title": "TikTok",
                 "description": "Официалният TikTok профил на бота."
+            },
+            "status": {
+                "title": "Състояние на услугите",
+                "description": "Състояние на всички услуги на Devi, Discord API и Gateway."
             }
         }
     },

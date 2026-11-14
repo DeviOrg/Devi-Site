@@ -10,6 +10,7 @@
       {% if not config.get("STATIC_BUILD") %}
         <a href="{{ url_for('links_page', lang=lang) }}" data-i18n="nav.links" data-follow-lang{% if request.endpoint == "links_page" %} aria-current="page"{% endif %}>{{ t("nav.links") }}</a>
       {% endif %}
+        <a href="{{ url_for('links_link', link='status') }}" target="_blank" rel="noopener noreferrer" data-i18n="links_page.items.status.title">{{ t("links_page.items.status.title") }}</a>
     </nav>
 
     <div class="topbar__tools">
