@@ -246,7 +246,8 @@ def login():
     if current_session() and not refresh:
         return redirect(target or url_for("dashboard.servers", lang=lang))
 
-    return _start_oauth({"next": target, "lang": lang, "prompt": "none", "retried": False})
+    prompt = "none" if (refresh and current_session()) else "consent"
+    return _start_oauth({"next": target, "lang": lang, "prompt": prompt, "retried": prompt == "consent"})
 
 
 @bp.get("/oauth/callback")

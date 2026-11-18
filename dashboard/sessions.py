@@ -1,19 +1,3 @@
-"""Server-side sessions kept in SQLite (standard library only).
-
-The Flask cookie only carries a random session id. The user's profile and server
-list live here: a server list can be far larger than the 4 KB a cookie allows,
-and this way the cookie never exposes it. SQLite is shared safely between
-worker processes, unlike an in-memory dict.
-
-Session ids are stored hashed, so a copy of the database cannot be used to hijack
-a session.
-
-Sessions slide: every use pushes the expiry forward again, so somebody who opens the
-dashboard now and then stays signed in, and only a session left alone for the whole
-lifetime expires. One user may have several sessions at once (a phone and a PC, a
-second browser), signing in on a new device does not sign the others out.
-"""
-
 from __future__ import annotations
 
 import hashlib

@@ -1,17 +1,3 @@
-"""Discord OAuth2 (authorization code flow) with the `identify` and `guilds` scopes.
-
-The access token is used once during sign-in, to read the user's profile and
-server list, and is then thrown away. It is never stored, so nothing that could
-act on the user's behalf is kept. Who may do what on a server is decided by the
-bot on every request, so a stale server list can never grant access.
-
-The token is deliberately NOT revoked. For Discord, revoking it also withdraws the
-user's authorization of the app (it disappears from Settings > Authorized Apps).
-`prompt=none` then has nothing to reuse, and the full "Authorize Devi" screen would
-come back on every single sign-in. The scopes are read-only (`identify`, `guilds`)
-and the token expires on its own.
-"""
-
 from __future__ import annotations
 
 from typing import Any
@@ -21,7 +7,7 @@ import requests
 
 from .settings import Settings
 
-USER_AGENT = "DeviSite (https://github.com/security-camera/Devi-Site, 1.0)"
+USER_AGENT = "DeviSite (https://github.com/DeviOrg/Devi-Site, 1.0)"
 TIMEOUT = (3.05, 10)
 SCOPES = ("identify", "guilds")
 GUILDS_PER_PAGE = 200
@@ -41,7 +27,8 @@ def authorize_url(settings: Settings, redirect_uri: str, state: str, prompt: str
             "redirect_uri": redirect_uri,
             "scope": " ".join(SCOPES),
             "state": state,
-            # "none" skips the consent screen for people who already authorized the app.
+            # "consent" always shows the authorization screen; "none" skips it for people
+            # who already authorized the app (used only for the server list refresh).
             "prompt": prompt,
         }
     )
