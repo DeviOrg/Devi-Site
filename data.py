@@ -184,6 +184,17 @@ COMMAND_GROUPS = [
         ],
     },
     {
+        "id": "sticky_roles",
+        "icon": "🎭",
+        "commands": [
+            ("sticky_roles_enable", "/sticky_roles enable"),
+            ("sticky_roles_add", "/sticky_roles add"),
+            ("sticky_roles_remove", "/sticky_roles remove"),
+            ("sticky_roles_list", "/sticky_roles list"),
+        ],
+    },
+
+    {
         "id": "user",
         "icon": "",
         "commands": [

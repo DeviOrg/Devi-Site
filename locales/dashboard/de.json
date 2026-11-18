@@ -97,6 +97,11 @@
             "title": "Fallenkanal",
             "lead": "Eine Falle für Spam-Bots. Wer in diesem Kanal schreibt, wird sofort bestraft und die Nachricht wird gelöscht."
         },
+        "sticky_roles": {
+            "name": "Persistente Rollen",
+            "title": "Persistente Rollen",
+            "lead": "Lege fest, ob Devi sich die Rollen von Mitgliedern beim Verlassen merkt und sie bei der Rückkehr wiederherstellt. Eine leere Liste bedeutet, dass alle Rollen gespeichert werden."
+        },
         "triggers": {
             "name": "Trigger",
             "title": "Trigger",
@@ -186,6 +191,21 @@
             "role_above": "Devi kann diese Rolle nicht vergeben: Sie steht über Devis höchster Rolle."
         }
     },
+    "sticky_roles": {
+        "enabled_label": "Persistente Rollen aktivieren",
+        "enabled_hint": "Wenn diese Funktion aktiviert ist, speichert Devi die geeigneten Rollen eines Mitglieds beim Verlassen und stellt sie bei der Rückkehr wieder her.",
+        "roles_label": "Zu speichernde Rollen",
+        "roles_hint": "Lasse die Liste leer, um alle geeigneten Rollen zu speichern. Sobald du eine Rolle hinzufügst, werden nur die aufgeführten Rollen gespeichert.",
+        "all_roles": "Keine Rollen ausgewählt — wenn die Funktion aktiviert ist, werden alle geeigneten Rollen gespeichert.",
+        "choose_role": "Rolle auswählen",
+        "add_role": "Rolle hinzufügen",
+        "remove_role": "Entfernen",
+        "missing_role": "Unbekannte Rolle ({id})",
+        "missing_hint": "Mindestens eine gespeicherte Rolle existiert nicht mehr. Entferne sie aus der Liste, bevor du speicherst.",
+        "unassignable": "Devi kann diese Rolle nicht wiederherstellen (prüfe die Rollenposition und die Berechtigung „Rollen verwalten“ des Bots).",
+        "bot_perms": "Devi benötigt die Berechtigung „Rollen verwalten“ und muss in der Rollenliste über allen Rollen stehen, die wiederhergestellt werden sollen.",
+        "limit": "Ausgewählte Rollen: {count} / {max}"
+    },
     "language": {
         "label": "Sprache",
         "hint": "In dieser Sprache antwortet und schreibt Devi auf diesem Server.",
@@ -270,6 +290,10 @@
             "ManageHoneypots": {
                 "desc": "Den Honeypot-Kanal und die Strafe über das Dashboard oder /honeypot konfigurieren.",
                 "label": "Honeypot-Verwaltung"
+            },
+            "ManageStickyRoles": {
+                "desc": "Legt fest, welche Rollen Devi beim Verlassen eines Mitglieds speichert und bei dessen Rückkehr wiederherstellt.",
+                "label": "Persistente Rollen verwalten"
             }
         }
     },

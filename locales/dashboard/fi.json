@@ -97,6 +97,11 @@
             "title": "Ansakanava",
             "lead": "Ansa roskaposti-boteille. Jokainen, joka kirjoittaa tälle kanavalle, saa heti rangaistuksen ja hänen viestinsä poistetaan."
         },
+        "sticky_roles": {
+            "name": "Pysyvät roolit",
+            "title": "Pysyvät roolit",
+            "lead": "Valitse, muistaako Devi jäsenten roolit heidän poistuessaan ja palauttaako se ne heidän liittyessään takaisin. Tyhjä luettelo tarkoittaa, että kaikki roolit säilytetään."
+        },
         "triggers": {
             "name": "Triggerit",
             "title": "Triggerit",
@@ -186,6 +191,21 @@
             "role_above": "Devi ei voi antaa tätä roolia: se on Devin korkeimman roolin yläpuolella."
         }
     },
+    "sticky_roles": {
+        "enabled_label": "Ota pysyvät roolit käyttöön",
+        "enabled_hint": "Kun toiminto on käytössä, Devi tallentaa jäsenen sallitut roolit hänen poistuessaan ja palauttaa ne hänen liittyessään takaisin.",
+        "roles_label": "Säilytettävät roolit",
+        "roles_hint": "Jätä luettelo tyhjäksi, jos haluat säilyttää kaikki sallitut roolit. Kun lisäät roolin, vain luettelossa olevat roolit säilytetään.",
+        "all_roles": "Rooliluettelo on tyhjä — kaikki sopivat roolit säilytetään, kun toiminto on käytössä.",
+        "choose_role": "Valitse rooli",
+        "add_role": "Lisää rooli",
+        "remove_role": "Poista",
+        "missing_role": "Tuntematon rooli ({id})",
+        "missing_hint": "Yhtä tai useampaa tallennettua roolia ei enää ole. Poista ne luettelosta ennen tallentamista.",
+        "unassignable": "Devi ei voi palauttaa tätä roolia (tarkista sen sijainti ja botin Hallitse rooleja -oikeus).",
+        "bot_perms": "Devi tarvitsee Hallitse rooleja -oikeuden ja roolihierarkiassa korkeamman aseman kuin kaikilla rooleilla, jotka haluat palauttaa.",
+        "limit": "Valitut roolit: {count} / {max}"
+    },
     "language": {
         "label": "Kieli",
         "hint": "Devi vastaa ja kirjoittaa tällä palvelimella tällä kielellä.",
@@ -270,6 +290,10 @@
             "ManageHoneypots": {
                 "desc": "Määritä honeypot-kanava ja rangaistus hallintapaneelissa tai komennolla /honeypot.",
                 "label": "Honeypot-kanavien hallinta"
+            },
+            "ManageStickyRoles": {
+                "desc": "Määritä, mitkä roolit Devi tallentaa jäsenen poistuessa ja palauttaa hänen liittyessään takaisin.",
+                "label": "Pysyvien roolien hallinta"
             }
         }
     },

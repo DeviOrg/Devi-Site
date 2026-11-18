@@ -210,6 +210,8 @@
         http_error: "server",
         triggers_unavailable: "server",
         honeypot_unavailable: "server",
+        sticky_roles_unavailable: "server",
+        invalid_body: "invalid_request",
         invalid_punishment: "invalid_request",
         invalid_json: "invalid_request",
         invalid_id: "invalid_request",
@@ -270,8 +272,8 @@
 
     /* ---------- state ---------- */
 
-    const ORDER = ["permissions", "birthdays", "logs", "voice", "honeypot", "triggers", "language"];
-    const ICONS = { permissions: "🗂️", birthdays: "🥳", logs: "📝", voice: "⌛", honeypot: "🍯", triggers: "💬", language: "🌍" };
+    const ORDER = ["permissions", "birthdays", "logs", "voice", "honeypot", "sticky_roles", "triggers", "language"];
+    const ICONS = { permissions: "🗂️", birthdays: "🥳", logs: "📝", voice: "⌛", honeypot: "🍯", sticky_roles: "🎭", triggers: "💬", language: "🌍" };
     const KIND_PREFIX = { text: "# ", forum: "# ", voice: "🔊 ", stage: "🎙️ " };
 
     const state = {
@@ -284,6 +286,7 @@
         birthdays: null,
         voice: null,
         honeypot: null,
+        sticky_roles: null,
         language: null,
         perms: null,
         triggers: null
@@ -360,6 +363,11 @@
         state.birthdays = { value: current.birthdays ? current.birthdays.channel_id || "" : "" };
         state.voice = current.voice ? voiceDraft(current.voice) : null;
         state.honeypot = current.honeypot ? honeypotDraft(current.honeypot) : null;
+        state.sticky_roles = current.sticky_roles ? {
+            enabled: !!current.sticky_roles.enabled,
+            role_ids: (current.sticky_roles.role_ids || []).slice(),
+            addRole: ""
+        } : null;
         state.language = current.language ? { value: current.language.locale } : null;
         state.perms = current.permissions ? buildPerms(current.permissions, null) : null;
         state.triggers = { query: "", creating: null, editing: null, removing: {} };
@@ -378,6 +386,9 @@
                 return voiceDirty();
             case "honeypot":
                 return honeypotDirty();
+            case "sticky_roles":
+                return state.sticky_roles.enabled !== settings("sticky_roles").enabled ||
+                    JSON.stringify(state.sticky_roles.role_ids) !== JSON.stringify(settings("sticky_roles").role_ids || []);
             case "language":
                 return state.language.value !== settings("language").locale;
             case "permissions":
@@ -1147,6 +1158,155 @@
             fail(error);
         } finally {
             state.busy.honeypot = false;
+            render();
+        }
+    }
+
+    /* ---------- panel: sticky roles ---------- */
+
+    function stickyRolesPanel() {
+        const saved = settings("sticky_roles");
+        const form = state.sticky_roles;
+        const busy = !!state.busy.sticky_roles;
+        const maximum = Number(saved.max_roles) || 250;
+
+        const warning = h("div", { class: "note note--warn", role: "note" }, t("sticky_roles.bot_perms"));
+        warning.hidden = !!saved.bot_can_manage;
+
+        const enabled = h("input", {
+            class: "sticky-toggle__input",
+            type: "checkbox",
+            id: "field-sticky-enabled",
+            checked: form.enabled,
+            onchange: function (event) {
+                form.enabled = event.target.checked;
+                sync();
+            }
+        });
+
+        const candidates = state.data.roles.filter(function (role) {
+            return !role.managed && role.assignable && form.role_ids.indexOf(role.id) < 0;
+        });
+        const options = [h("option", { value: "", selected: !form.addRole }, t("sticky_roles.choose_role"))];
+        candidates.forEach(function (role) {
+            options.push(h("option", { value: role.id, selected: role.id === form.addRole }, role.name));
+        });
+        const roleSelect = selectOf(options, function (event) {
+            form.addRole = event.target.value;
+            sync();
+        }, { id: "field-sticky-role", label: t("sticky_roles.choose_role") });
+
+        const add = button(t("sticky_roles.add_role"), "btn--line btn--sm", function () {
+            if (!form.addRole || form.role_ids.length >= maximum) {
+                return;
+            }
+            form.role_ids.push(form.addRole);
+            form.addRole = "";
+            render();
+        }, busy);
+
+        const roleItems = form.role_ids.map(function (id) {
+            const role = roleById(id);
+            const details = [];
+            if (role && role.color) {
+                details.push(h("span", { class: "role-dot", style: { "--dot": role.color }, "aria-hidden": "true" }));
+            }
+            details.push(h("span", { class: "sticky-role__name" }, role ? role.name : t("sticky_roles.missing_role", { id: id })));
+            if (role && (!role.assignable || role.managed)) {
+                details.push(h("span", { class: "sticky-role__warning" }, t("sticky_roles.unassignable")));
+            }
+
+            return h(
+                "li",
+                { class: "sticky-role" },
+                h("div", { class: "sticky-role__info" }, details),
+                button(t("sticky_roles.remove_role"), "btn--line btn--sm", function () {
+                    form.role_ids = form.role_ids.filter(function (roleId) {
+                        return roleId !== id;
+                    });
+                    render();
+                }, busy)
+            );
+        });
+
+        const list = roleItems.length
+            ? h("ul", { class: "sticky-list" }, roleItems)
+            : h("div", { class: "note" }, t("sticky_roles.all_roles"));
+        const count = h("p", { class: "field__hint" }, t("sticky_roles.limit", { count: form.role_ids.length, max: maximum }));
+        const missing = form.role_ids.some(function (id) {
+            return !roleById(id);
+        });
+        const missingNote = h("div", { class: "note note--warn", role: "note" }, t("sticky_roles.missing_hint"));
+        missingNote.hidden = !missing;
+
+        const save = button(busy ? t("common.saving") : t("common.save"), "btn--solid", saveStickyRoles);
+        const discard = button(t("common.discard"), "btn--line", function () {
+            state.sticky_roles = {
+                enabled: !!saved.enabled,
+                role_ids: (saved.role_ids || []).slice(),
+                addRole: ""
+            };
+            render();
+        });
+
+        function sync() {
+            const changed = isDirty("sticky_roles");
+            const atLimit = form.role_ids.length >= maximum;
+            add.disabled = !form.addRole || atLimit || busy;
+            save.disabled = !changed || busy || missing;
+            discard.disabled = !changed || busy;
+            renderNav();
+        }
+
+        const view = frame("sticky_roles", {
+            status: { on: !!saved.enabled, text: saved.enabled ? t("common.status_on") : t("common.status_off") },
+            body: [
+                h("label", { class: "sticky-toggle", for: "field-sticky-enabled" }, enabled, h("span", null, t("sticky_roles.enabled_label"))),
+                h("p", { class: "field__hint" }, t("sticky_roles.enabled_hint")),
+                warning,
+                field({
+                    id: "field-sticky-role",
+                    label: t("sticky_roles.roles_label"),
+                    control: h("div", { class: "sticky-add" }, roleSelect, add),
+                    hint: t("sticky_roles.roles_hint"),
+                    extra: count
+                }),
+                missingNote,
+                list
+            ],
+            foot: [save, discard]
+        });
+
+        sync();
+        return view;
+    }
+
+    async function saveStickyRoles() {
+        if (state.busy.sticky_roles) {
+            return;
+        }
+
+        const form = state.sticky_roles;
+        state.busy.sticky_roles = true;
+        render();
+
+        try {
+            const result = await api("PUT", "/sticky-roles", {
+                enabled: form.enabled,
+                role_ids: form.role_ids
+            });
+
+            state.data.settings.sticky_roles = result;
+            state.sticky_roles = {
+                enabled: !!result.enabled,
+                role_ids: (result.role_ids || []).slice(),
+                addRole: ""
+            };
+            toast("ok", t("common.saved"));
+        } catch (error) {
+            fail(error);
+        } finally {
+            state.busy.sticky_roles = false;
             render();
         }
     }
@@ -2105,6 +2265,8 @@
         },
         voice: voicePanel,
         honeypot: honeypotPanel,
+        sticky_roles: stickyRolesPanel,
+
         triggers: triggersPanel,
         language: languagePanel
     };

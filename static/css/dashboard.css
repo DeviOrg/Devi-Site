@@ -406,6 +406,14 @@ a.server-card__name::after {  /* the whole card is the click target */
   border-color: color-mix(in srgb, var(--warn) 45%, transparent);
   background: color-mix(in srgb, var(--warn) 10%, transparent);
   color: var(--ink);
+.sticky-add { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.sticky-toggle { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.sticky-toggle__input { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
+.sticky-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.sticky-role { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.sticky-role__info { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.sticky-role__name { font-weight: 600; overflow-wrap: anywhere; }
+.sticky-role__warning { color: var(--warn); font-size: 0.8rem; }
 }
 
 /* ---------- switches (permissions) ---------- */

@@ -97,6 +97,11 @@
             "title": "Honeypot channel",
             "lead": "A trap for spam bots. Whoever writes in this channel is punished at once and their message is deleted."
         },
+        "sticky_roles": {
+            "name": "Sticky roles",
+            "title": "Sticky roles",
+            "lead": "Choose whether Devi remembers members' roles when they leave and restores them when they rejoin. An empty list means all roles are kept."
+        },
         "triggers": {
             "name": "Triggers",
             "title": "Triggers",
@@ -186,6 +191,21 @@
             "role_above": "Devi can't give this role: it's above Devi's highest role."
         }
     },
+    "sticky_roles": {
+        "enabled_label": "Enable sticky roles",
+        "enabled_hint": "When enabled, Devi saves a member's eligible roles when they leave and restores them when they rejoin.",
+        "roles_label": "Roles to keep",
+        "roles_hint": "Leave the list empty to keep every eligible role. Once you add a role, only the listed roles are kept.",
+        "all_roles": "No roles are selected — all eligible roles will be kept when sticky roles are enabled.",
+        "choose_role": "Choose a role",
+        "add_role": "Add role",
+        "remove_role": "Remove",
+        "missing_role": "Unknown role ({id})",
+        "missing_hint": "One or more saved roles no longer exist. Remove them from the list before saving.",
+        "unassignable": "Devi cannot restore this role (check its position and the bot's Manage Roles permission).",
+        "bot_perms": "Devi needs the Manage Roles permission and a role position above every role you want to restore.",
+        "limit": "Selected roles: {count} / {max}"
+    },
     "language": {
         "label": "Language",
         "hint": "Devi's replies and messages on this server use this language.",
@@ -270,6 +290,10 @@
             "ManageHoneypots": {
                 "desc": "Configure the honeypot channel and punishment through the dashboard or /honeypot.",
                 "label": "Manage Honeypots"
+            },
+            "ManageStickyRoles": {
+                "desc": "Configure which roles Devi remembers when a member leaves and restores when they rejoin.",
+                "label": "Manage Sticky Roles"
             }
         }
     },

@@ -45,7 +45,7 @@
     },
     "features": {
         "title": "What Devi does",
-        "subtitle": "Thirteen groups of commands that cover most of what people usually install three separate bots for.",
+        "subtitle": "Sixteen groups of commands that cover most of what people usually install three separate bots for.",
         "moderation": {
             "title": "Moderation and logs",
             "text": "Warnings with a full history and an \"old case\" flag, message clean-up, slow mode, roles that expire on their own, and one channel where everything gets written down."
@@ -108,6 +108,7 @@
         "tempvoice": "Temporary voice",
         "permissions": "Permissions",
         "security": "Security",
+        "sticky_roles": "Sticky roles",
         "user": "Other (requires adding to \"My Apps\")"
     },
     "cmd": {
@@ -187,7 +188,11 @@
         "make_quote": "Creates a quote from a message",
         "make_quote_name": "Message → Apps → Devi → Turn into a quote",
         "add_caption": "Adds a caption to media",
-        "add_caption_name": "Message → Apps → Devi → Add a caption to media"
+        "add_caption_name": "Message → Apps → Devi → Add a caption to media",
+        "sticky_roles_enable": "Turns sticky roles on or off for this server",
+        "sticky_roles_add": "Adds a role to the list of roles to keep",
+        "sticky_roles_remove": "Removes a role from the list of roles to keep",
+        "sticky_roles_list": "Shows the sticky roles settings and kept roles"
     },
     "cta": {
         "title": "Add Devi and set it up in a couple of minutes",

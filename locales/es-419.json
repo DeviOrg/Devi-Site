@@ -45,7 +45,7 @@
     },
     "features": {
         "title": "Qué sabe hacer Devi",
-        "subtitle": "Trece secciones de comandos que cubren casi todo para lo que normalmente se instalan tres bots distintos.",
+        "subtitle": "Dieciséis secciones de comandos que cubren casi todo para lo que normalmente se instalan tres bots distintos.",
         "moderation": {
             "title": "Moderación y registros",
             "text": "Advertencias con historial y marca de «caso antiguo», limpieza de mensajes, modo lento, roles temporales y un canal aparte donde queda registrado todo lo que ocurre."
@@ -108,6 +108,7 @@
         "tempvoice": "Canales de voz temporales",
         "permissions": "Permisos",
         "security": "Seguridad",
+        "sticky_roles": "Roles persistentes",
         "user": "Otro (requiere agregarse a \"Mis aplicaciones\")"
     },
     "cmd": {
@@ -187,7 +188,11 @@
         "make_quote": "Crea una cita a partir de un mensaje",
         "make_quote_name": "Mensaje → Aplicaciones → Devi → Convertir en cita",
         "add_caption": "Agrega un pie de foto al contenido multimedia",
-        "add_caption_name": "Mensaje → Aplicaciones → Devi → Agregar un pie de foto al contenido multimedia"
+        "add_caption_name": "Mensaje → Aplicaciones → Devi → Agregar un pie de foto al contenido multimedia",
+        "sticky_roles_enable": "Activa o desactiva los roles persistentes en este servidor",
+        "sticky_roles_add": "Agrega un rol a la lista de roles que se conservan",
+        "sticky_roles_remove": "Quita un rol de la lista de roles que se conservan",
+        "sticky_roles_list": "Muestra la configuración y la lista de roles conservados"
     },
     "cta": {
         "title": "Agrega a Devi y configúralo en un par de minutos",

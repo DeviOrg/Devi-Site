@@ -45,7 +45,7 @@
     },
     "features": {
         "title": "Mitä Devi osaa",
-        "subtitle": "Kolmetoista komento-osiota, jotka kattavat lähes kaiken, mihin yleensä tarvitaan kolme eri bottia.",
+        "subtitle": "Kuusitoista komento-osiota, jotka kattavat lähes kaiken, mihin yleensä tarvitaan kolme eri bottia.",
         "moderation": {
             "title": "Moderointi ja lokit",
             "text": "Varoitukset historioineen ja vanhan tapauksen merkinnällä, viestien poisto, hidas tila, väliaikaiset roolit sekä erillinen kanava, johon kaikki tapahtumat kirjataan."
@@ -108,6 +108,7 @@
         "tempvoice": "Väliaikaiset puhekanavat",
         "permissions": "Oikeudet",
         "security": "Turvallisuus",
+        "sticky_roles": "Pysyvät roolit",
         "user": "Muu (edellyttää lisäämistä \"Omat sovellukset\" -osioon)"
     },
     "cmd": {
@@ -187,7 +188,11 @@
         "make_quote": "Luo lainauksen viestistä",
         "make_quote_name": "Viesti → Sovellukset → Devi → Muuta lainaukseksi",
         "add_caption": "Lisää kuvatekstin mediaan",
-        "add_caption_name": "Viesti → Sovellukset → Devi → Lisää kuvateksti mediaan"
+        "add_caption_name": "Viesti → Sovellukset → Devi → Lisää kuvateksti mediaan",
+        "sticky_roles_enable": "Ottaa pysyvät roolit käyttöön tai poistaa ne käytöstä tällä palvelimella",
+        "sticky_roles_add": "Lisää roolin säilytettävien roolien luetteloon",
+        "sticky_roles_remove": "Poistaa roolin säilytettävien roolien luettelosta",
+        "sticky_roles_list": "Näyttää pysyvien roolien asetukset ja säilytettävät roolit"
     },
     "cta": {
         "title": "Lisää Devi ja määritä se muutamassa minuutissa",

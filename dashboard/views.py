@@ -49,7 +49,7 @@ SNOWFLAKE = re.compile(r"^\d{15,20}$")
 SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 API_PREFIX = "/api/dashboard/"
 MAX_API_BODY = 64 * 1024
-SECTION_COUNT = 7  # permissions, birthdays, logs, voice, honeypot, triggers, language
+SECTION_COUNT = 8  # permissions, birthdays, logs, voice, honeypot, sticky roles, triggers, language
 
 ADMINISTRATOR = 0x8
 MANAGE_GUILD = 0x20
@@ -438,6 +438,11 @@ def api_temp_voice(guild_id: str):
 @bp.put(API_PREFIX + "<guild_id>/honeypot")
 def api_honeypot(guild_id: str):
     return _forward(guild_id, "PUT", "/honeypot", body=True)
+
+@bp.put(API_PREFIX + "<guild_id>/sticky-roles")
+def api_sticky_roles(guild_id: str):
+    return _forward(guild_id, "PUT", "/sticky-roles", body=True)
+
 
 
 @bp.put(API_PREFIX + "<guild_id>/language")

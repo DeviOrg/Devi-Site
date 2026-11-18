@@ -97,6 +97,11 @@
             "title": "Canal trampa",
             "lead": "Una trampa para bots de spam. Quien escriba en este canal recibe un castigo al instante y su mensaje se elimina."
         },
+        "sticky_roles": {
+            "name": "Roles persistentes",
+            "title": "Roles persistentes",
+            "lead": "Elige si Devi debe recordar los roles de los miembros cuando se van y restaurarlos cuando regresan. Una lista vacía significa que se conservan todos los roles."
+        },
         "triggers": {
             "name": "Disparadores",
             "title": "Disparadores",
@@ -186,6 +191,21 @@
             "role_above": "Devi no puede dar este rol: está por encima de su rol más alto."
         }
     },
+    "sticky_roles": {
+        "enabled_label": "Activar roles persistentes",
+        "enabled_hint": "Al activar esta función, Devi guarda los roles válidos de un miembro cuando se va y los restaura cuando vuelve.",
+        "roles_label": "Roles que se conservarán",
+        "roles_hint": "Deja la lista vacía para conservar todos los roles válidos. Al agregar un rol, solo se conservarán los roles de la lista.",
+        "all_roles": "No hay roles seleccionados: al activar la función se conservarán todos los roles válidos.",
+        "choose_role": "Elige un rol",
+        "add_role": "Agregar rol",
+        "remove_role": "Quitar",
+        "missing_role": "Rol desconocido ({id})",
+        "missing_hint": "Uno o más roles guardados ya no existen. Quítalos de la lista antes de guardar.",
+        "unassignable": "Devi no puede restaurar este rol (revisa su posición y el permiso Administrar roles del bot).",
+        "bot_perms": "Devi necesita el permiso Administrar roles y una posición superior a todos los roles que quieras restaurar.",
+        "limit": "Roles seleccionados: {count} / {max}"
+    },
     "language": {
         "label": "Idioma",
         "hint": "Devi responde y escribe en este idioma en este servidor.",
@@ -270,6 +290,10 @@
             "ManageHoneypots": {
                 "desc": "Configura el canal honeypot y el castigo desde el panel de control o mediante /honeypot.",
                 "label": "Administración de honeypots"
+            },
+            "ManageStickyRoles": {
+                "desc": "Configura qué roles recuerda Devi cuando un miembro se va y restaura cuando vuelve.",
+                "label": "Administrar roles persistentes"
             }
         }
     },

@@ -45,7 +45,7 @@
     },
     "features": {
         "title": "Was Devi kann",
-        "subtitle": "Dreizehn Befehlsbereiche, die fast alles abdecken, wofür man normalerweise drei verschiedene Bots braucht.",
+        "subtitle": "Sechzehn Befehlsbereiche, die fast alles abdecken, wofür man normalerweise drei verschiedene Bots braucht.",
         "moderation": {
             "title": "Moderation & Protokolle",
             "text": "Verwarnungen mit Verlauf und Markierung „alter Fall“, Nachrichtenlöschung, Slowmode, zeitlich begrenzte Rollen und ein eigener Kanal, in dem alles protokolliert wird."
@@ -108,6 +108,7 @@
         "tempvoice": "Temporäre Sprachkanäle",
         "permissions": "Berechtigungen",
         "security": "Sicherheit",
+        "sticky_roles": "Persistente Rollen",
         "user": "Andere (muss zu \"Meine Apps\" hinzugefügt werden)"
     },
     "cmd": {
@@ -187,7 +188,11 @@
         "make_quote": "Erstellt ein Zitat aus einer Nachricht",
         "make_quote_name": "Nachricht → Apps → Devi → In ein Zitat umwandeln",
         "add_caption": "Fügt Medien eine Beschriftung hinzu",
-        "add_caption_name": "Nachricht → Apps → Devi → Medien beschriften"
+        "add_caption_name": "Nachricht → Apps → Devi → Medien beschriften",
+        "sticky_roles_enable": "Aktiviert oder deaktiviert persistente Rollen auf diesem Server",
+        "sticky_roles_add": "Fügt der Liste gespeicherter Rollen eine Rolle hinzu",
+        "sticky_roles_remove": "Entfernt eine Rolle aus der Liste gespeicherter Rollen",
+        "sticky_roles_list": "Zeigt die Einstellungen und die Liste gespeicherter Rollen"
     },
     "cta": {
         "title": "Füge Devi hinzu und richte ihn in wenigen Minuten ein",
