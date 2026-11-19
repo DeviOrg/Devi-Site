@@ -351,5 +351,13 @@
         "role_required": "Wähle eine Rolle für diese Strafe.",
         "cant_send": "Devi kann in diesem Kanal keine Nachrichten senden. Gib ihm die Berechtigungen „Kanal ansehen“ und „Nachrichten senden“.",
         "invalid_locale": "Diese Sprache ist nicht verfügbar."
+    },
+    "thanks": {
+        "kicker": "Devi ist jetzt auf deinem Server",
+        "title": "Danke, dass du Devi hinzugefügt hast!",
+        "lead": "Alles ist bereit. Öffne das Dashboard und richte Devi für deine Community ein – das dauert nur ein paar Minuten.",
+        "open_panel": "Dashboard öffnen",
+        "help": "Brauchst du Hilfe?",
+        "support": "Besuche unseren Support-Server"
     }
 }

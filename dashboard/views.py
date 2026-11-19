@@ -2,6 +2,7 @@
 
     /login                       start Discord OAuth2 (?next=/path, ?refresh=1 to re-read the server list)
     /oauth/callback              Discord sends the user back here
+    /thanks                      "thank you for adding Devi" page (redirect target of the invite link)
     /logout (POST)               end the session
     /dashboard                   server picker
     /dashboard/<guild>           settings of one server (a page that loads its data from the API below)
@@ -248,6 +249,32 @@ def login():
 
     prompt = "none" if (refresh and current_session()) else "consent"
     return _start_oauth({"next": target, "lang": lang, "prompt": prompt, "retried": prompt == "consent"})
+
+
+@bp.get("/thanks")
+def thanks():
+    requested_lang = request.args.get("lang")
+    lang = pick_lang(requested_lang)
+    guild_id = request.args.get("guild_id", "")
+    guild_id = guild_id if SNOWFLAKE.match(guild_id) else None
+
+    if request.args.get("error"):
+        return redirect(url_for("landing", lang=lang))
+
+    if requested_lang != lang or "code" in request.args or "permissions" in request.args:
+        query = {"lang": lang}
+        if guild_id:
+            query["guild_id"] = guild_id
+        return redirect(url_for("dashboard.thanks", **query))
+
+    # With a known server the button goes straight to its settings (after sign-in if needed).
+    target = url_for("dashboard.guild_page", guild_id=guild_id, lang=lang) if guild_id else None
+    panel_url = (
+        url_for("dashboard.login", lang=lang, next=target)
+        if target
+        else url_for("dashboard.servers", lang=lang)
+    )
+    return render("thanks.html", lang, panel_url=panel_url)
 
 
 @bp.get("/oauth/callback")

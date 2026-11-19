@@ -351,5 +351,13 @@
         "role_required": "Choose a role for this punishment.",
         "cant_send": "Devi can't write in this channel. Give it the View Channel and Send Messages permissions.",
         "invalid_locale": "This language isn't available."
+    },
+    "thanks": {
+        "kicker": "Devi is now on your server",
+        "title": "Thank you for adding Devi!",
+        "lead": "Everything is ready to go. Open the dashboard to set Devi up for your community — it only takes a couple of minutes.",
+        "open_panel": "Open dashboard",
+        "help": "Need a hand?",
+        "support": "Join our support server"
     }
 }

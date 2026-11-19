@@ -351,5 +351,13 @@
         "role_required": "Valitse rooli tälle rangaistukselle.",
         "cant_send": "Devi ei voi lähettää viestejä tälle kanavalle. Anna sille oikeudet Näytä kanava ja Lähetä viestejä.",
         "invalid_locale": "Tämä kieli ei ole käytettävissä."
+    },
+    "thanks": {
+        "kicker": "Devi on nyt palvelimellasi",
+        "title": "Kiitos, kun lisäsit Devin!",
+        "lead": "Kaikki on valmista. Avaa hallintapaneeli ja määritä Devi yhteisöäsi varten – siihen menee vain pari minuuttia.",
+        "open_panel": "Avaa hallintapaneeli",
+        "help": "Tarvitsetko apua?",
+        "support": "Liity tukipalvelimelle"
     }
 }

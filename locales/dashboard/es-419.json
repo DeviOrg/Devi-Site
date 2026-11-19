@@ -351,5 +351,13 @@
         "role_required": "Elige un rol para este castigo.",
         "cant_send": "Devi no puede enviar mensajes en este canal. Dale los permisos Ver canal y Enviar mensajes.",
         "invalid_locale": "Este idioma no está disponible."
+    },
+    "thanks": {
+        "kicker": "Devi ya está en tu servidor",
+        "title": "¡Gracias por agregar a Devi!",
+        "lead": "Todo está listo. Abre el panel de control y configura a Devi para tu comunidad: solo toma un par de minutos.",
+        "open_panel": "Abrir panel de control",
+        "help": "¿Necesitas ayuda?",
+        "support": "Únete al servidor de soporte"
     }
 }

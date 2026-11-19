@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ t("dashboard.thanks.title") }}{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/thanks.css') }}">
+{% endblock %}
+{% block main %}
+<div class="thanks" id="thanks">
+  {# Decorative background: drifting glow orbs and the layer the script fills with confetti and sparkles. #}
+  <div class="thanks__bg" aria-hidden="true">
+    <span class="thanks__orb thanks__orb--a"></span>
+    <span class="thanks__orb thanks__orb--b"></span>
+    <span class="thanks__orb thanks__orb--c"></span>
+  </div>
+  <div class="thanks__fx" id="thanks-fx" aria-hidden="true"></div>
+
+  <div class="shell thanks__inner">
+    <div class="thanks__badge" id="thanks-badge" aria-hidden="true">
+      <span class="thanks__ring thanks__ring--1"></span>
+      <span class="thanks__ring thanks__ring--2"></span>
+      <span class="thanks__ring thanks__ring--3"></span>
+      <svg class="thanks__check" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path class="thanks__check-path" d="M17 33.5 28 44.5 48 22"/>
+      </svg>
+    </div>
+
+    <p class="thanks__kicker" data-i18n="dashboard.thanks.kicker">{{ t("dashboard.thanks.kicker") }}</p>
+    <h1 class="thanks__title" data-i18n="dashboard.thanks.title">{{ t("dashboard.thanks.title") }}</h1>
+    <p class="thanks__lead" data-i18n="dashboard.thanks.lead">{{ t("dashboard.thanks.lead") }}</p>
+
+    <a class="btn btn--solid btn--lg thanks__cta" href="{{ panel_url }}" data-follow-lang>
+      <span data-i18n="dashboard.thanks.open_panel">{{ t("dashboard.thanks.open_panel") }}</span>
+      <svg class="thanks__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <p class="thanks__help">
+      <span data-i18n="dashboard.thanks.help">{{ t("dashboard.thanks.help") }}</span>
+      <a href="{{ links.support }}" rel="noopener" data-i18n="dashboard.thanks.support">{{ t("dashboard.thanks.support") }}</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/thanks.js') }}"></script>
+{% endblock %}
